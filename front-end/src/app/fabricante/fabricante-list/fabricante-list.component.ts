@@ -11,7 +11,7 @@ export class FabricanteListComponent implements OnInit {
  
     fabricantes: any = [] // Vetor vazio
  
-    displayedColumns : string[] = ['nome','editar','excluir']
+    displayedColumns : string[] = ['nome','endereco','cnpj','telefone','email','editar','excluir']
  
   constructor(
       private fabricanteSrv : FabricanteService,

@@ -12,10 +12,34 @@
   <!--- Note that these columns can be defined in any order.
        The actual rendered columns are set as a property on the row definition" -->
  
-  <!-- Position Column -->
+  <!-- Nome Column -->
   <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Fabricante</th>
+    <th mat-header-cell *matHeaderCellDef>Fabricante</th>
     <td mat-cell *matCellDef="let fabricante"> {{fabricante.nome}} </td>
+  </ng-container>
+
+  <!-- Endereço Column -->
+  <ng-container matColumnDef="endereco">
+    <th mat-header-cell *matHeaderCellDef> Endereço</th>
+    <td mat-cell *matCellDef="let fabricante"> {{fabricante.endereco}} </td>
+  </ng-container>
+
+   <!-- CNPJ Column -->
+  <ng-container matColumnDef="cnpj">
+    <th mat-header-cell *matHeaderCellDef> CNPJ</th>
+    <td mat-cell *matCellDef="let fabricante"> {{fabricante.cnpj}} </td>
+  </ng-container>
+
+   <!-- Telefone Column -->
+  <ng-container matColumnDef="telefone">
+    <th mat-header-cell *matHeaderCellDef> Telefone</th>
+    <td mat-cell *matCellDef="let fabricante"> {{fabricante.telefone}} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email</th>
+    <td mat-cell *matCellDef="let fabricante"> {{fabricante.email}} </td>
   </ng-container>
  
     <!-- Editar Column -->
