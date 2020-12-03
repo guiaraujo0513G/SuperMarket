@@ -39,7 +39,7 @@ export class FabricanteFormComponent implements OnInit {
           }
       }
   }
-
+  //
     async salvar(form : NgForm) {
     try {
         if(form.valid) {
