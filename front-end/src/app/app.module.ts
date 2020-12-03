@@ -10,6 +10,8 @@ import { MainToolbarComponent } from './ui/main-toolbar/main-toolbar.component';
 import { FabricanteListComponent } from './fabricante/fabricante-list/fabricante-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainFooterComponent } from './ui/main-footer/main-footer.component';
+import { FabricanteFormComponent } from './fabricante/fabricante-form/fabricante-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,14 +20,16 @@ import { MainFooterComponent } from './ui/main-footer/main-footer.component';
     MainMenuComponent,
     MainToolbarComponent,
     FabricanteListComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    FabricanteFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
 
