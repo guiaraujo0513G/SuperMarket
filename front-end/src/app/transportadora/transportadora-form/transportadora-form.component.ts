@@ -1,23 +1,23 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FabricanteService } from './../fabricante.service';
+import { TransportadoraService } from './../transportadora.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-fabricante-form',
-  templateUrl: './fabricante-form.component.html',
-  styleUrls: ['./fabricante-form.component.scss']
+  selector: 'app-transportadora-form',
+  templateUrl: './transportadora-form.component.html',
+  styleUrls: ['./transportadora-form.component.scss']
 })
-export class FabricanteFormComponent implements OnInit {
+export class TransportadoraFormComponent implements OnInit {
 
-  title : string = 'Novo fabricante'
+  title : string = 'Nova transportadora'
 
-  fabricante : any = {} // Objeto vazio, nome da entidade no SINGULAR
+  transportadora : any = {} // Objeto vazio, nome da entidade no SINGULAR
 
   constructor(
-    private fabricanteSrv : FabricanteService,
+    private transportadoraSrv : TransportadoraService,
     private snackBar : MatSnackBar,
     private location : Location,
     private actRoute : ActivatedRoute
@@ -28,9 +28,9 @@ export class FabricanteFormComponent implements OnInit {
     if(this.actRoute.snapshot.params['id']) {
       try {
         // 1) Trazer o registro do back-end para edição
-        this.fabricante = await this.fabricanteSrv.obterUm(this.actRoute.snapshot.params['id'])
+        this.transportadora = await this.transportadoraSrv.obterUm(this.actRoute.snapshot.params['id'])
         // 2) Mudar o título da página
-        this.title = 'Editando fabricante'
+        this.title = 'Editando transportadora'
       }
       catch(erro) {
         console.log(erro)
@@ -44,13 +44,13 @@ export class FabricanteFormComponent implements OnInit {
     try {
       if(form.valid) {
         // 1) Enviar os dados para o back-end para serem salvos
-        if(this.fabricante._id) {
+        if(this.transportadora._id) {
           // _id existe, esse registro já foi salvo anteriormente
           // no BD e é caso de atualização
-          await this.fabricanteSrv.atualizar(this.fabricante)
+          await this.transportadoraSrv.atualizar(this.transportadora)
         }
         else {
-          await this.fabricanteSrv.novo(this.fabricante)
+          await this.transportadoraSrv.novo(this.transportadora)
         }
         // 2) Dar um feedback (mensagem) para o usuário
         this.snackBar.open('Dados salvos com sucesso.', 'Entendi',
@@ -65,7 +65,6 @@ export class FabricanteFormComponent implements OnInit {
         { duration: 5000 })
     }
   }
-
   voltar(form : NgForm) {
     let result = true
     // form.dirty = formulário "sujo", não salvo (via código)

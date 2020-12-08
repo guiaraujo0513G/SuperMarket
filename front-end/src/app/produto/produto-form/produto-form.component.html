@@ -1,0 +1,54 @@
+<h1>{{ title }}</h1>
+
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+<mat-form-field>
+    <mat-label>Nome do Produto</mat-label>
+    <input name="nome" [(ngModel)]="produto.nome" matInput required placeholder="Informe o nome do Fornecedor">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantidade</mat-label>
+    <input name="qtde" [(ngModel)]="produto.qtde" matInput required placeholder="Informe a Quantidade">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Preço</mat-label>
+    <input name="preco" [(ngModel)]="produto.preco" matInput required placeholder="Informe o Preço">
+  </mat-form-field>
+
+   <mat-form-field>
+    <mat-label>Fabricante</mat-label>
+      <mat-select name="fabricante" [(ngModel)]="produto.fabricante" required>
+        <mat-option *ngFor="let fabricante of fabricantes" [value]="fabricante._id">
+          {{ fabricante.nome }}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Fornecedor</mat-label>
+      <mat-select name="fornecedor" [(ngModel)]="produto.fornecedor" required>
+        <mat-option *ngFor="let fornecedor of fornecedores" [value]="fornecedor._id">
+          {{ fornecedor.nome }}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Transportadora</mat-label>
+      <mat-select name="transportadora" [(ngModel)]="produto.transportadora" required>
+        <mat-option *ngFor="let transportadora of transportadoras" [value]="transportadora._id">
+          {{ transportadora.nome }}
+        </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <mat-toolbar class="form-buttons">
+    <mat-toolbar-row>
+      <button mat-raised-button type="submit" color="accent">
+        Salvar
+      </button>
+      <button mat-raised-button type="button" (click)="voltar(f)">
+        Voltar
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</form>

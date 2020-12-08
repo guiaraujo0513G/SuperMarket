@@ -1,23 +1,23 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FabricanteService } from './../fabricante.service';
+import { FornecedorService } from './../fornecedor.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-fabricante-form',
-  templateUrl: './fabricante-form.component.html',
-  styleUrls: ['./fabricante-form.component.scss']
+  selector: 'app-fornecedor-form',
+  templateUrl: './fornecedor-form.component.html',
+  styleUrls: ['./fornecedor-form.component.scss']
 })
-export class FabricanteFormComponent implements OnInit {
+export class FornecedorFormComponent implements OnInit {
 
-  title : string = 'Novo fabricante'
+  title : string = 'Novo fornecedor'
 
-  fabricante : any = {} // Objeto vazio, nome da entidade no SINGULAR
+  fornecedor : any = {} // Objeto vazio, nome da entidade no SINGULAR
 
   constructor(
-    private fabricanteSrv : FabricanteService,
+    private fornecedorSrv : FornecedorService,
     private snackBar : MatSnackBar,
     private location : Location,
     private actRoute : ActivatedRoute
@@ -28,9 +28,9 @@ export class FabricanteFormComponent implements OnInit {
     if(this.actRoute.snapshot.params['id']) {
       try {
         // 1) Trazer o registro do back-end para edição
-        this.fabricante = await this.fabricanteSrv.obterUm(this.actRoute.snapshot.params['id'])
+        this.fornecedor = await this.fornecedorSrv.obterUm(this.actRoute.snapshot.params['id'])
         // 2) Mudar o título da página
-        this.title = 'Editando fabricante'
+        this.title = 'Editando fornecedor'
       }
       catch(erro) {
         console.log(erro)
@@ -44,13 +44,13 @@ export class FabricanteFormComponent implements OnInit {
     try {
       if(form.valid) {
         // 1) Enviar os dados para o back-end para serem salvos
-        if(this.fabricante._id) {
+        if(this.fornecedor._id) {
           // _id existe, esse registro já foi salvo anteriormente
           // no BD e é caso de atualização
-          await this.fabricanteSrv.atualizar(this.fabricante)
+          await this.fornecedorSrv.atualizar(this.fornecedor)
         }
         else {
-          await this.fabricanteSrv.novo(this.fabricante)
+          await this.fornecedorSrv.novo(this.fornecedor)
         }
         // 2) Dar um feedback (mensagem) para o usuário
         this.snackBar.open('Dados salvos com sucesso.', 'Entendi',
