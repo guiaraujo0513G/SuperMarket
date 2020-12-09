@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiServer: 'https://3000-c96b6c09-87e9-4c4a-ae64-02d96bde4262.ws-us02.gitpod.io/'
+  apiServer: 'https://3000-c96b6c09-87e9-4c4a-ae64-02d96bde4262.ws-us03.gitpod.io/'
 };
 
 /*

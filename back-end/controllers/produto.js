@@ -35,12 +35,12 @@ controller.listar = async (req, res) => {
 }
  
 // Método obterUm(), implementando a operação RETRIEVE (one)
-controller.obterUm = (req, res) => {
-    const id = req.params.id // Capturandoo parâmetro id
-    let obj = Produto.findById(id)
- 
+controller.obterUm = async (req, res) => {
+    const id = req.params.id    // Capturando o parâmetro id
+    let obj = await Produto.findById(id)
+
     // Se o objeto vier preenchido (achou), então o retornamos
-    if(obj) res.send(obj)
+    if (obj) res.send(obj)
     // Senão (objeto vazio), enviamos o status HTTP 404: Not found
     else res.status(404).end()
 }

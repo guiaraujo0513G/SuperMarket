@@ -12,6 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainFooterComponent } from './ui/main-footer/main-footer.component';
 import { FabricanteFormComponent } from './fabricante/fabricante-form/fabricante-form.component';
 import { FormsModule } from '@angular/forms';
+import { FornecedorListComponent } from './fornecedor/fornecedor-list/fornecedor-list.component';
+import { FornecedorFormComponent } from './fornecedor/fornecedor-form/fornecedor-form.component';
+import { TransportadoraListComponent } from './transportadora/transportadora-list/transportadora-list.component';
+import { TransportadoraFormComponent } from './transportadora/transportadora-form/transportadora-form.component';
+import { LojaFormComponent } from './loja/loja-form/loja-form.component';
+import { LojaListComponent } from './loja/loja-list/loja-list.component';
+import { ProdutoListComponent } from './produto/produto-list/produto-list.component';
+import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
 
 
 @NgModule({
@@ -21,7 +29,15 @@ import { FormsModule } from '@angular/forms';
     MainToolbarComponent,
     FabricanteListComponent,
     MainFooterComponent,
-    FabricanteFormComponent
+    FabricanteFormComponent,
+    FornecedorListComponent,
+    FornecedorFormComponent,
+    TransportadoraListComponent,
+    TransportadoraFormComponent,
+    LojaFormComponent,
+    LojaListComponent,
+    ProdutoListComponent,
+    ProdutoFormComponent
   ],
   imports: [
     BrowserModule,

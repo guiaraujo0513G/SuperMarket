@@ -32,34 +32,34 @@ controller.listar = async (req, res) => {
 }
  
 // Método obterUm(), implementando a operação RETRIEVE (one)
-controller.obterUm = (req, res) => {
-    const id = req.params.id // Capturandoo parâmetro id
-    let obj = Fabricante.findById(id)
- 
+controller.obterUm = async (req, res) => {
+    const id = req.params.id    // Capturando o parâmetro id
+    let obj = await Fabricante.findById(id)
+
     // Se o objeto vier preenchido (achou), então o retornamos
-    if(obj) res.send(obj)
+    if (obj) res.send(obj)
     // Senão (objeto vazio), enviamos o status HTTP 404: Not found
     else res.status(404).end()
 }
 
-// Método atualizar(), implementado a operação UPDATE
+// Método atualizar(), implementando a operação UPDATE
 controller.atualizar = async (req, res) => {
-    try{
-    // Isolar o id do objeto para fins de busca
-    const id = req.body._id
-    // Busca o objeto pelo id e, encontrando-o, substitui o conteúdo por req.body
-    let obj = await Fabricante.findByIdAndUpdate(id, req.body)
- 
-    // Se encontrou e substituiu, retornamos HTTP 204: No content
-    if(obj) res.status(204).end()
-    // Caso contrário, retorna HTTP 404: Not found
-    else res.status(404).end()
+    try {
+        // Isolar o _id do objeto para fins de busca
+        const id = req.body._id
+        // Busca o objeto pelo id e, encontrando-o, substitui o conteúdo por req.body
+        let obj = await Fabricante.findByIdAndUpdate(id, req.body)
+
+        // Se encontrou e substituiu, retornamos HTTP 204: No content
+        if (obj) res.status(204).end()
+        // Caso contrário, retorna HTTP 404: Not found
+        else res.status(404).end()
     }
-    catch(erro){
+    catch (erro) {
         console.error(erro)
         res.status(500).end()
     }
-} 
+}
 
 //Método excluir(), implementando a operação DELETE
 controller.excluir = async (req, res) => {
